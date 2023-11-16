@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pokedex_EESA.Vista.Pokemon.ListaPokemon"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="80,*" BackgroundColor="#F5F6F6">
+        <Label Text="POKEDEX" HorizontalOptions="Center" VerticalOptions="Center" FontSize="28" FontAttributes="Bold" TextColor="#FD8298" />
+        <CollectionView BackgroundColor="#EAEDEC" Grid.Row="1"></CollectionView>
+        <Button Text="+" Grid.Row="1" HeightRequest="100" WidthRequest="100" VerticalOptions="End" HorizontalOptions="End" CornerRadius="50" Margin="15" FontSize="50" FontAttributes="Bold" BackgroundColor="#F5CA55" Command="{Binding Iraregistrocommand}"/>
+    </Grid>
+</ContentPage>
