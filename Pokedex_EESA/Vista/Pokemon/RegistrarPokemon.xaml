@@ -28,7 +28,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Icono:" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"  />
-                <Entry Placeholder="Ingrese el icono" FontAttributes="Bold" TextColor="#ffeb72" PlaceholderColor="Wheat" TextTransform="Lowercase" FontSize="20" HorizontalOptions="StartAndExpand" Text="{Binding Txticono}"/>
+                <Entry Placeholder="Ingrese el icono" FontAttributes="Bold" TextColor="#ffeb72" PlaceholderColor="Wheat" FontSize="20" HorizontalOptions="StartAndExpand" Text="{Binding Txticono}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Poder:" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"  />

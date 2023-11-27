@@ -7,6 +7,9 @@ using Firebase.Database.Query;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.ObjectModel;
+using System.Reactive.Linq;
+using Firebase.Database;
 
 namespace Pokedex_EESA.Datos
 {
@@ -24,18 +27,20 @@ namespace Pokedex_EESA.Datos
                  Poder = parametros.Poder,
             });
         }
-        public async Task<List<Mpokemon>> MostrarPokemones()
+        public async Task<ObservableCollection<Mpokemon>> MostrarPokemones()
         {
-            return (await Cconexion.firebase.Child("Pokemon").OnceAsync<Mpokemon>()).Select(item => new Mpokemon
-            {
-                Idpokemon = item.Key,
-                Nombre = item.Object.Nombre,
-                ColorFondo = item.Object.ColorFondo,
-                Colorpoder = item.Object.Colorpoder,
-                Nroorden = item.Object.Nroorden,
-                Poder = item.Object.Poder,
-                Icono = item.Object.Icono
-            }).ToList();
+            //var data = (await Cconexion.firebase.Child("Pokemon").OnceAsync<Mpokemon>()).Where(a=>a.Key!="Modelo").Select(item => new Mpokemon
+            //{
+            //    Idpokemon = item.Key,
+            //    Nombre = item.Object.Nombre,
+            //    ColorFondo = item.Object.ColorFondo,
+            //    Colorpoder = item.Object.Colorpoder,
+            //    Nroorden = item.Object.Nroorden,
+            //    Poder = item.Object.Poder,
+            //    Icono = item.Object.Icono
+            //});
+            var data = await Task.Run(()=> Cconexion.firebase.Child("Pokemon").AsObservable<Mpokemon>().AsObservableCollection());
+            return data;
         }
     }
 }

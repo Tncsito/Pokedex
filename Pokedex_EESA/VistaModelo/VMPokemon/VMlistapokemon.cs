@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Pokedex_EESA.Vista.Pokemon;
+using Pokedex_EESA.Datos;
+using Pokedex_EESA.Modelo;
+using System.Collections.ObjectModel;
+
 
 namespace Pokedex_EESA.VistaModelo.VMPokemon
 {
@@ -12,6 +16,7 @@ namespace Pokedex_EESA.VistaModelo.VMPokemon
     {
         #region VARIABLES
         string _Texto;
+        ObservableCollection<Mpokemon> _Listapokemon;
         #endregion
 
         #region CONTRUCTOR
@@ -24,12 +29,23 @@ namespace Pokedex_EESA.VistaModelo.VMPokemon
             get { return _Texto; }
             set { SetValue(ref _Texto, value); }
         }
+        public ObservableCollection<Mpokemon> Listapokemon
+        {
+            get { return _Listapokemon; }
+            set { SetValue(ref _Listapokemon, value); OnPropertyChanged(); }
+            
+        }
         #endregion
 
         #region PROCESOS
         public async Task Iraregistro()
         {
             await Navigation.PushModalAsync(new RegistrarPokemon());
+        }
+        public async Task Mostrarpokemon()
+        {
+            var funcion = new Dpokemon();
+            Listapokemon = await funcion.MostrarPokemones();
         }
 
         public void ProcesoSimple()
@@ -46,6 +62,7 @@ namespace Pokedex_EESA.VistaModelo.VMPokemon
         public VMlistapokemon(INavigation navigation)
         {
             Navigation = navigation;
+            Mostrarpokemon();
         }
         #endregion
     }

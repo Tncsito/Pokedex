@@ -18,5 +18,6 @@ namespace Pokedex_EESA.Vista.Pokemon
             InitializeComponent();
             BindingContext = new VMlistapokemon(Navigation);
         }
+
     }
 }
