@@ -11,7 +11,7 @@ namespace Pokedex_EESA
         {
             InitializeComponent();
 
-            MainPage = new ListaPokemon();
+            MainPage = new Detallepokemon();
         }
 
         protected override void OnStart()
